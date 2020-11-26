@@ -35,6 +35,7 @@ const mutations = {
             }
             return oldMovie
         })
+    }
 }
 
 const actions = {
@@ -47,6 +48,9 @@ const actions = {
     addMovie({commit,state}, movie){
         movie.id = state.movies.length + 1
         commit(ADD_MOVIE,movie)
+    },
+    updateMovie({commit},movie){
+        commit(UPDATE_MOVIE,movie)
     },
     deleteMovie({commit},id){
         commit(DELETE_MOVIE,id)
