@@ -15,7 +15,7 @@
 					<h3>
 						<span
 							id="movie-rating"
-							:style="{ 'background-color': getRatingColor() }"
+							:style="{ 'background-color': getColorRating() }"
 							>{{ movie.rating }}</span
 						>
 					</h3>
