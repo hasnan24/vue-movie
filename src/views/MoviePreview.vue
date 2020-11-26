@@ -10,7 +10,7 @@
               <h3>{{ movie.year }}</h3>
               <h3>{{ movie.genre }}</h3>
               <h3>
-				  <span :style="{'background-color' : getColorRating()}">
+				  <span id="movie-rating" :style="{'background-color' : getColorRating()}">
 					  {{movie.rating}}
 				  </span>
 			  </h3>
@@ -22,7 +22,7 @@
 			      </span>
 			  </h3>
 			  <h3>
-				  <strong>Storyline</strong>
+				  <strong>Storyline : </strong>
 				  {{movie.storyline}}
 			  </h3>
 			<div id="options">
@@ -37,8 +37,12 @@
 
 <script>
 import Navbar from '../components/Navbar'
+import ratingColor from '../mixins/getRatingColor'
 export default {
-    components: {
+	mixins: [
+		ratingColor
+	],
+	    components: {
         Navbar
     },
     props: {
@@ -52,13 +56,7 @@ export default {
 			movie: {}
 		};
 	},
-    methods: {
-        getColorRating() {
-		   if(this.movie.rating > 7) return "#5eb85e";
-		   if(this.movie.rating > 4) return "#ffa809";
-		   return "#e10505";
-	   },
-	},
+    
 	created(){
 		console.log("ID : "+ this.id);
        this.movie = this.$store.getters.getMovieById(parseInt(this.id))
